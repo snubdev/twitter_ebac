@@ -28,12 +28,14 @@ def register(request):
 	if request.method == 'POST':
 		form = UserRegisterForm(request.POST)
 		if form.is_valid():
-			form.save()
+			new_user = form.save(commit=False)
+			new_user.save()
+			Profile.objects.create(user=new_user)
 			return redirect('home')
 	else:
 		form = UserRegisterForm()
 
-	context = {'form' : form}
+	context = {'form': form}
 	return render(request, 'twitter/register.html', context)
 
 
@@ -52,18 +54,17 @@ def profile(request, username):
 @login_required
 def editar(request):
 	if request.method == 'POST':
-		u_form = UserUpdateForm(request.POST, instance=request.user)
-		p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+		u_form = UserUpdateForm(data=request.POST, instance=request.user)
+		p_form = ProfileUpdateForm(data=request.POST, files=request.FILES, instance=request.user.profile)
 
 		if u_form.is_valid() and p_form.is_valid():
 			u_form.save()
 			p_form.save()
-			return redirect('home')
 	else:
 		u_form = UserUpdateForm(instance=request.user)
 		p_form = ProfileUpdateForm()
 
-	context = {'u_form' : u_form, 'p_form' : p_form}
+	context = {'u_form':u_form, 'p_form':p_form}
 	return render(request, 'twitter/editar.html', context)
 
 @login_required

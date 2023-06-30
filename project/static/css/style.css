@@ -217,3 +217,7 @@ a:link {
     color: #1E96EB;
     text-decoration: none;
 }
+
+.twitter-login-box .m-erro {
+     color: red;
+}

@@ -1,11 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+#from django.conf import settings
 
 
 class Profile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
-	bio = models.CharField(default='Hola, twitter', max_length=100)
+	bio = models.CharField(default='', max_length=100)
 	image = models.ImageField(default='default.png')
 
 	def __str__(self):

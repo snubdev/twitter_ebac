@@ -20,14 +20,16 @@
                 {{ form.password }}
             </div>
             {% if form.errors %}
-            <p>Username or password not correct.</p>
+            <div class="m-erro">
+                <p>Desculpe, mas as credenciais fornecidas são inválidas. Verifique novamente seu nome de usuário e senha.</p>
+            </div>
             {% endif %}
 
             <button class="twitter-btn">Entrar</button>
         </form>
 
         <div class="footer">
-            <a href="{% url 'register' %}">inscreva-se no twitter_clone</a>
+            <a href="{% url 'register' %}">inscreva-se no twitter-EBAC</a>
         </div>
 
     </div>
