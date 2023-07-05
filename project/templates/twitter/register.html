@@ -27,15 +27,25 @@
                 <label for="password-id">Password</label>
                 {{ form.password1 }}
             </div>
-            <p>
-                A senha deve ter no mínimo 12 caracteres.
+
+            <div class="infor-password">
+               <p>
+                A senha deve ter no mínimo 8 caracteres.
                 Utilize uma combinação de letras maiúsculas e minúsculas.
                 Inclua números e caracteres especiais, como !@#$%^&*.
-            </p>
+               </p>
+            </div>
+
             <div class="input-wrapper">
                 <label for="password-id">Confirm Password</label>
                 {{ form.password2 }}
             </div>
+
+            {% if form.errors %}
+            <div class="m-erro-register">
+                <p>Ocorreu um erro ao cadastrar as informações. Por favor, verifique os dados e tente novamente.</p>
+            </div>
+            {% endif %}
 
             <button class="twitter-btn">Registrar-se</button>
         </form>

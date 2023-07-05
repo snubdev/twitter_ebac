@@ -221,3 +221,11 @@ a:link {
 .twitter-login-box .m-erro {
      color: red;
 }
+
+.infor-password {
+    font-weight: bold;
+}
+.m-erro-register {
+     color: red;
+}
+
